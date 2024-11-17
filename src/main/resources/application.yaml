@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: security
+  security:
+    oauth2:
+      authorizationserver:
+        issuer: http://localhost:8080/auth
+        port:
+
+      client:
+        registration:
+          banca-client:
+            provider: banca-provider
+            client-id: ggi-api
+            client-secret: ggi-secret
+            authorization-grant-type: client_credentials
+            scope:
+              - read
+              - write
+        provider:
+          banca-provider:
+            token-uri: http://localhost:8080/oauth2/token
+
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/auth
+server:
+  port: 8080
+
